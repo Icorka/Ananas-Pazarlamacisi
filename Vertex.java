@@ -1,6 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package furkanmetin;
 
-
+/**
+ *
+ * @author Furkan
+ */
 public class Vertex {
     
     final private String id;
@@ -9,7 +17,7 @@ public class Vertex {
 //    public  String name;
     public double latitude;
     public double longitude;
-    public int height;
+    public double height;
     
 
     public Vertex(String id, String name, double latitude, double longitude,int height) {
@@ -59,7 +67,7 @@ public class Vertex {
 
     @Override
     public String toString() {
-        return name+" "+id+" "+latitude+" "+longitude+" "+height;
+        return name+" "+id+"  ";
 //         return name;
     }
 
