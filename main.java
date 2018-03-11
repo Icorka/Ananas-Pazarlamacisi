@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package furkanmetin;
 
 import java.io.BufferedReader;
@@ -24,7 +29,6 @@ public class FurkanMetin {
         edges = new ArrayList<Edge>();
         int kayit_say = dosya_satir_say();
         Vertex[] sehir = new Vertex[kayit_say];
-        String kayit ;
         try{
             BufferedReader reader = null;
             reader = new BufferedReader(new FileReader("C:\\Users\\Furkan\\Desktop\\lat long1.txt"));
@@ -35,18 +39,15 @@ public class FurkanMetin {
                 satir = reader.readLine();
                 if(satir!=null){
                     String[] blok;
-                
-                blok = satir.split(",");
-                String isim = blok[0];
-                double en = Double.parseDouble(blok[1]);
-                double boy = Double.parseDouble(blok[2]);
-                String plk = blok[3];
-                int yuk = Integer.parseInt(blok[4]);
-//                System.out.println(isim+" "+en+" "+boy+" "+plk+" "+yuk+" ");
-                  sehir[i] = new Vertex(plk,isim,en,boy,yuk);
-                nodes.add(sehir[i]);
-                i++;
-                
+                    blok = satir.split(",");
+                    String isim = blok[0];
+                    double en = Double.parseDouble(blok[1]);
+                    double boy = Double.parseDouble(blok[2]);
+                    String plk = blok[3];
+                    int yuk = Integer.parseInt(blok[4]);
+                    sehir[i] = new Vertex(plk,isim,en,boy,yuk);
+                    nodes.add(sehir[i]);
+                    i++;
                 }
             }
         }catch(FileNotFoundException e){
@@ -58,29 +59,25 @@ public class FurkanMetin {
 //        for(Vertex n : sehir){
 //            System.out.println(n);
 //        }
-        String[] komsuluk ;
+        
+        String[][] komsuluk = new String[kayit_say][];
         try{
             BufferedReader reader = null;
             reader = new BufferedReader(new FileReader("C:\\Users\\Furkan\\Desktop\\komsu.txt"));
             String satir = reader.readLine();
-            
+            String[] blok;
             int i=0;
             while (satir!=null) {
                 satir = reader.readLine();
-                String[] blok;
                 if(satir!=null){
-                
-                blok = satir.split(",");
-//                    System.out.println((i+1)+" . satir : "+blok.length);
-//                for(int j=0;i<blok.length;j++){
-//                    
-//                }
-                System.out.println(satir);
-//                System.out.println(isim+" "+en+" "+boy+" "+plk+" "+yuk+" ");
-                  
-                
+                    blok = satir.split(",");
+                    int sütun = blok.length;
+                    
+                    komsuluk[i]=new String[sütun];
+                    for(int j=0;j<blok.length;j++){
+                        komsuluk[i][j]=blok[j];
+                    }
                 i++;
-                
                 }
             }
         }catch(FileNotFoundException e){
@@ -88,57 +85,79 @@ public class FurkanMetin {
         }catch(IOException e){
             System.out.println("Dosya veri girdisinde hata olustu.");
         }
-//        nodes = new ArrayList<Vertex>();
-//        edges = new ArrayList<Edge>();
-//        for (int i = 0; i < 11; i++) {
-//            Vertex location = new Vertex("Node_" + i, "Node_" + i);
-//            nodes.add(location);
-//        }
-//        addLane("Edge_0", 0, 1, 85);
-//        addLane("Edge_1", 1, 0, 85);
-//        addLane("Edge_2", 0, 2, 217);
-//        addLane("Edge_3", 2, 0, 217);
-//        addLane("Edge_4", 0, 4, 173);
-//        addLane("Edge_5", 4, 0, 173);
-//        addLane("Edge_6", 2, 6, 186);
-//        addLane("Edge_7", 6, 2, 186);
-//        addLane("Edge_8", 2, 7, 103);
-//        addLane("Edge_9", 7, 2, 103);
-//        addLane("Edge_10", 3, 7, 183);
-//        addLane("Edge_11", 7, 3, 183);
-//        addLane("Edge_12", 5, 8, 250);
-//        addLane("Edge_13", 8, 5, 250);
-//        addLane("Edge_14", 8, 9, 84);
-//        addLane("Edge_15", 9, 8, 84);
-//        addLane("Edge_16", 7, 9, 167);
-//        addLane("Edge_17", 9, 7, 167);
-//        addLane("Edge_18", 4, 9, 502);
-//        addLane("Edge_19", 9, 4, 502);
-//        addLane("Edge_20", 9, 10, 40);
-//        addLane("Edge_21", 10, 9, 40);
-//        addLane("Edge_22", 1, 10, 600);
-//        addLane("Edge_23", 10, 1, 600);
-//
-//        // Lets check from location Loc_1 to Loc_10
-//        Graph graph = new Graph(nodes, edges);
-//        DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
-//        dijkstra.execute(nodes.get(0));
-//        LinkedList<Vertex> path = dijkstra.getPath(nodes.get(5));
-//
-//        
-//        for (Vertex vertex : path) {
-//            System.out.println(vertex);
-//        }
-//        
-// 
-//    }  
-//
-//    
-//    private static void addLane(String laneId, int sourceLocNo, int destLocNo,int duration) {
-//        Edge lane = new Edge(laneId,nodes.get(sourceLocNo), nodes.get(destLocNo), duration );
-//        edges.add(lane);
-//    }
+       
+        Zeplin h = new Zeplin(5);
+        System.out.println(h);
+        
+        for(int i=0;i<kayit_say;i++){
+            int sütun=komsuluk[i].length;
+            for(int j=1;j<sütun;j++){
+                String deger = komsuluk[i][j];
+                int indis=Integer.parseInt(deger);
+                double uzunluk=calculateWeight(nodes.get(i),nodes.get(indis-1),nodes.get(34-1),nodes.get(1-1));
+                int dgr = donustur(uzunluk);
+                double derece=calculateSlope(nodes.get(i),nodes.get(indis-1),nodes.get(34-1),nodes.get(1-1),dgr);
+                if(h.manevra>=derece){
+                    addLane(i+"Edge"+indis, i, indis-1, dgr, derece);                  
+                }
+            }    
+        }
+//            for(Edge n: edges){
+//                System.out.println(n.getId()+" "+n.weight);
+//            }
+
+        Graph graph = new Graph(nodes, edges);
+        DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
+        dijkstra.execute(nodes.get(34-1));
+        LinkedList<Vertex> path = dijkstra.getPath(nodes.get(1-1));
+        
+        
+        // Bağlı listenin null değer taşıyıp taşımadığını kontrol edip gerekli hesaplamalar yapılıyor...
+        if(path==null){
+            System.out.println("Belirlenen şehirler arasi Güzergah bulunamamistir.");
+        }
+        else{
+            int k =0;
+            double toplam=0;
+            String[] id_bilgi = new String[boyut_hesapla(path)];
+            // bağlı listenin içerisindeki nesneleri parse edip yol hesaplaması yapabilmek için gerekli işlemler 
+            for (Vertex n : path) {
+                id_bilgi[k]=n.getId();
+//                System.out.println(id_bilgi[k]);
+                 k++;
+                System.out.print(n);
+            }
+            for(int e=0;e<id_bilgi.length-1;e++){
+                int al_1 = Integer.parseInt(id_bilgi[e]);
+                int al_2 = Integer.parseInt(id_bilgi[e+1]);
+//                System.out.print(al_1+" "+al_2+"  ");
+                double uz = calculateWeight(nodes.get(al_1-1),nodes.get(al_2-1),nodes.get(34-1),nodes.get(1-1)) ;
+//                System.out.println(uz);
+                toplam = toplam + uz;
+            }
+            System.out.println("\nToplam yol : "+ toplam);
+            h.al_yol = toplam;
+        }    
+            System.out.println(h.al_yol);    
+                    
+                
+                
+            
+        
+        
+
+    }   
+    
+    // Parametre olarak aldığı bağlı listenin boyutunu return eder...
+    public static int boyut_hesapla(LinkedList<Vertex> vertexes){
+        return vertexes.size();
     }
+    public static void addLane(String laneId, int sourceLocNo, int destLocNo, int duration,double slope) {
+        Edge lane = new Edge(laneId,nodes.get(sourceLocNo), nodes.get(destLocNo), duration , slope );
+        edges.add(lane);
+    }
+   
+    // Dosya yı okuyup içerisindeki mevcut satır sayısını return eder...
     private static int dosya_satir_say(){
          int lineNumber = 0;
          try
@@ -158,5 +177,93 @@ public class FurkanMetin {
      
     }
     
-  
+    // Mevcut iki şehirin latitude ve longitude değerlerine göre aralarındaki
+    // mesafeyi hesaplıyor
+     public static double calculateWeight(Vertex source,Vertex destination,Vertex start,Vertex finish){
+        double weight ;
+        double fark;
+        double lat1 = source.latitude;
+        double lat2 = destination.latitude;
+        double lon1 = source.longitude;
+        double lon2 = destination.longitude;
+        
+        double R = 6371; // Radius of the earth in km
+        double dLat = deg2rad(lat2-lat1);  // deg2rad below
+        double dLon = deg2rad(lon2-lon1); 
+        double a = 
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2); 
+            double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+            double d = R * c; // Distance in km
+           
+        if(source==start&&destination==finish) {
+                fark = Math.abs(Math.abs(source.height-destination.height));
+               fark = fark/1000;
+                weight = Math.sqrt((fark*fark)+(d*d));
+                return weight;
+            }
+            else if(source==start){
+                fark = Math.abs((Math.abs(source.height-50-destination.height)));
+                fark = fark/1000;
+                weight = Math.sqrt((fark*fark)+(d*d));
+                return weight;
+            }
+            else if(destination==finish){
+                fark = Math.abs((Math.abs(source.height-destination.height+50)));
+                fark = fark/1000;
+                weight = Math.sqrt((fark*fark)+(d*d));
+                return weight;
+            }
+            else{
+                fark = Math.abs(Math.abs(source.height-destination.height));
+                fark = fark/1000;
+                weight = Math.sqrt((fark*fark)+(d*d));
+               return weight;
+            }
+        
+    }
+    
+    //Dereceyi radyana dönüştürür...
+    public static double deg2rad(double deg) {
+              return deg * (Math.PI/180);
+    }
+    
+  //Bu fonksiyon iki şehir arasındaki eğimi hesaplıyor (extent = derece) (slope = derece)
+    public static double calculateSlope(Vertex source,Vertex destination,Vertex start,Vertex finish,int dis){
+            double extent; 
+            double distance;
+            distance = dis;
+            distance = distance/10000;
+            if(source==start&&destination==finish) {
+                extent= Math.atan((Math.abs(source.height-destination.height))/distance);
+                extent=extent*180/Math.PI;
+                return extent;
+            }
+            else if(source==start){
+                extent= Math.atan((Math.abs(source.height-50-destination.height))/distance);
+                extent=extent*180/Math.PI;
+                return extent;
+            }
+            else if(destination==finish){
+                extent= Math.atan((Math.abs(source.height-destination.height+50))/distance);
+                extent=extent*180/Math.PI;
+                return extent;
+            }
+            else{
+               extent= Math.atan((Math.abs(source.height-destination.height))/distance);
+               extent=extent*180/Math.PI;
+               return extent;
+            }
+
+    }
+    
+    // Parametre olarak aldığı double değişkeni integer a çevirir.
+    public static int donustur(double deger){
+        deger = deger * 10000;
+        String m =Double.toString(deger);
+        String[] a = m.split("[.]");
+        int a_b = Integer.parseInt(a[0]);
+        return a_b;
+    }
 }
