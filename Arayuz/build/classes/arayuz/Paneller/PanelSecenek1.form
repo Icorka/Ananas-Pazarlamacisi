@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="Geri" pref="168" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="UcanGemi" pref="168" max="32767" attributes="0"/>
+                      <Component id="Ucak" max="32767" attributes="0"/>
+                      <Component id="Gemi" max="32767" attributes="0"/>
+                      <Component id="Bisiklet" max="32767" attributes="0"/>
+                      <Component id="Otomobil" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="58" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Otomobil" min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Bisiklet" min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="Gemi" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="Ucak" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="UcanGemi" min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="Geri" min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace pref="51" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="Otomobil">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Otomobil"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Bisiklet">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Bisiklet"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Gemi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gemi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Ucak">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="U&#xe7;ak"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="UcanGemi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="U&#xe7;an Gemi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="Geri">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xd6;nceki Men&#xfc;"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
